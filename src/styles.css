@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    /* Example: beautiful gradient background */
+    background: linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%) !important;
+    /* Optional: add a subtle pattern overlay */
+    /* background-image: url('data:image/svg+xml;utf8,<svg ...>'); */
+    font-family: 'Segoe UI', Arial, sans-serif;
+    /* Optional: smooth font rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    flex: 1 0 auto;
+    background: #f8f6ff;
+  }
+  app-root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    flex: 1 0 auto;
+  }
+  main.todo-container {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .main-footer {
+    margin-top: auto;
+    left: 0;
+    right: 0;
+  }

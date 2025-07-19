@@ -32,5 +32,10 @@ export class App {
       this.newTask = '';
     }
   }
-  
+  removeTask(id: number): void {
+    this.todoList = this.todoList.filter(item => item.id !== id);
+  }
+  toggleCompleted(index: number) {
+    this.todoList[index].completed = !this.todoList[index].completed;
+  }
 }

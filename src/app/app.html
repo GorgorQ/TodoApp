@@ -1,14 +1,29 @@
-
+<header class="main-header">
+  <h1>My Todo List</h1>
+  <p class="subtitle">Stay organized and productive!</p>
+</header>
 <main class="todo-container">
-  <div>
+  <div class="add-task">
     <input [(ngModel)]="newTask" placeholder="New task" />
     <button (click)="addTask()">Add Task</button>
   </div>
-    <ul>
-    <li *ngFor="let todo of todoList">
-      <span [class.completed]="todo.completed">{{ todo.title }}</span>
+    <ul class="todo-list">
+    <li *ngFor="let todo of todoList; let i = index " [class.completed]="todo.completed">
+      <input
+        type="checkbox"
+        [checked]="todo.completed"
+        (change)="toggleCompleted(i)"
+      />
+      <span>{{ todo.title }}</span>
+      <button (click)="removeTask(todo.id)">Remove</button>
+    </li>
     </ul>
+    <router-outlet />
 </main>
 
+<footer class="main-footer">
+  <span>Made with ❤️ by Alex</span>
+</footer>
 
-<router-outlet />
+
+

@@ -1,10 +1,248 @@
+/* Glassmorphism Container */
 .todo-container {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  background-color: #f9f9f9;
-  align-items: center;
+  max-width: 420px;
+  margin: 48px auto;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  padding: 40px 28px 28px 28px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
 }
+.todo-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+/* Add Task */
+.add-task {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+}
+.add-task input[type="text"] {
+  flex: 1;
+  padding: 12px 14px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1.08rem;
+  background: rgba(255,255,255,0.7);
+  transition: border 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(161,140,209,0.08);
+}
+.add-task input[type="text"]:focus {
+  border-color: #a18cd1;
+  box-shadow: 0 2px 8px rgba(161,140,209,0.18);
+}
+.add-task button {
+  padding: 12px 22px;
+  background: linear-gradient(90deg, #a18cd1 0%, #fbc2eb 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(161,140,209,0.18);
+  transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.add-task button:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 4px 16px rgba(161,140,209,0.22);
+  background: linear-gradient(90deg, #fbc2eb 0%, #a18cd1 100%);
+}
+
+/* Todo List */
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+.todo-list li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1.5px solid rgba(161,140,209,0.10);
+  transition: background 0.25s, box-shadow 0.25s;
+  position: relative;
+}
+.todo-list li:last-child {
+  border-bottom: none;
+}
+.todo-list li.completed {
+  background: linear-gradient(90deg, #e0c3fc 0%, #8ec5fc 100%);
+  box-shadow: 0 2px 12px rgba(161,140,209,0.10);
+  border-radius: 8px;
+}
+.todo-list li.completed span {
+  text-decoration: line-through;
+  color: #b39ddb;
+  opacity: 0.7;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+.todo-list input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  accent-color: #a18cd1;
+  border-radius: 6px;
+  border: 1.5px solid #a18cd1;
+  background: #fff;
+  transition: box-shadow 0.2s, border 0.2s;
+  box-shadow: 0 1px 4px rgba(161,140,209,0.10);
+  cursor: pointer;
+}
+.todo-list input[type="checkbox"]:hover {
+  box-shadow: 0 2px 8px rgba(161,140,209,0.18);
+  border-color: #fbc2eb;
+}
+.todo-list button {
+  margin-left: auto;
+  background: linear-gradient(90deg, #ff9a9e 0%, #fad0c4 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(255,154,158,0.12);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+.todo-list button:hover {
+  background: linear-gradient(90deg, #fad0c4 0%, #ff9a9e 100%);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 4px 16px rgba(255,154,158,0.18);
+}
+.todo-list span {
+  font-size: 1.08rem;
+  font-weight: 500;
+  color: #4a148c;
+  letter-spacing: 0.2px;
+  transition: color 0.2s;
+}
+.todo-list li.completed button {
+  background: transparent !important;
+  color: #b39ddb !important;
+  box-shadow: none !important;
+  border: 1.5px solid #b39ddb;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+.todo-list li.completed button:hover {
+  background: #f3e8ff !important;
+  color: #7e57c2 !important;
+  border-color: #7e57c2;
+}
+
+/* Header Styles */
+.main-header {
+  width: 100%;
+  padding: 38px 0 18px 0;
+  /* background: linear-gradient(90deg, #a18cd1 0%, #fbc2eb 100%); */
+  text-align: center;
+  /* color: #fff; */
+  box-shadow: none;
+  border-bottom-left-radius: 32px;
+  border-bottom-right-radius: 32px;
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 2;
+}
+.main-header h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+  letter-spacing: 1px;
+  text-shadow: none;
+}
+.main-header .subtitle {
+  font-size: 1.18rem;
+  font-weight: 400;
+  /* color: #f3e8ff; */
+  margin: 0;
+  letter-spacing: 0.5px;
+  text-shadow: none;
+}
+
+/* Footer Styles */
+.main-footer {
+  width: 100%;
+  padding: 18px 0 14px 0;
+  /* background: linear-gradient(90deg, #fbc2eb 0%, #a18cd1 100%); */
+  /* color: #4a148c; */
+  text-align: center;
+  font-size: 1.08rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  box-shadow: none;
+  /* margin-top: 32px; */
+  bottom: 0;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  right: 0;
+}
+
+
+
+@media (max-width: 500px) {
+  .todo-container {
+    padding: 18px 4px 10px 4px;
+  }
+  .add-task button {
+    padding: 10px 8px;
+    font-size: 0.98rem;
+  }
+  .todo-list li {
+    gap: 7px;
+    font-size: 1rem;
+    padding: 10px 0;
+  }
+  .todo-list button {
+    padding: 8px 10px;
+    font-size: 0.98rem;
+  }
+  .main-header {
+    padding: 22px 0 10px 0;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+    margin-bottom: 10px;
+  }
+  .main-header h1 {
+    font-size: 1.6rem;
+  }
+  .main-header .subtitle {
+    font-size: 1rem;
+  }
+  .main-footer {
+    padding: 10px 0 8px 0;
+    font-size: 0.98rem;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    margin-top: 18px;
+  }
+}
+
+
   
