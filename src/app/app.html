@@ -4,8 +4,9 @@
 </header>
 <main class="todo-container">
   <div class="add-task">
-    <input [(ngModel)]="newTask" placeholder="New task" />
+    <input [(ngModel)]="newTask" placeholder="New task" (keydown.enter)="addTask()"/>
     <button (click)="addTask()">Add Task</button>
+    
   </div>
     <ul class="todo-list">
     <li *ngFor="let todo of todoList; let i = index " [class.completed]="todo.completed">
@@ -15,7 +16,7 @@
         (change)="toggleCompleted(i)"
       />
       <span>{{ todo.title }}</span>
-      <button (click)="removeTask(todo.id)">Remove</button>
+      <button (click)="removeTask(todo.id)">Delete</button>
     </li>
     </ul>
     <router-outlet />
